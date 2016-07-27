@@ -1,0 +1,23 @@
+div .footnotes {
+    background-color: whitesmoke;
+    font-size: 12pt;
+    margin-top: 30px;
+    padding: 10px 10px 10px 10px;
+}
+
+.footnotes ol {
+    counter-reset: o-counter;
+    list-style-type: none
+}
+
+.footnotes ol li:before {
+    content: "[" counter(o-counter) "] ";
+    counter-increment: o-counter
+}
+
+.footnotes ol li p {
+    display: inline
+}
+
+a.footnote:before{ content:"[" }
+a.footnote:after{ content:"]" }
