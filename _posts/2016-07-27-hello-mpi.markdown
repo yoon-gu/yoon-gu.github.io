@@ -13,7 +13,9 @@ tags: MPI
 
 위의 2가지를 구분짓는 가장 큰 차이점은 병렬화 실행단위(?)가 `thread`와 `process`라고 생각한다.
 
-(아무런 사전 조치가 없다면) `thread`끼리는 메모리를 공유할 수 있고, `process`끼리는 memory를 공유할 수 없다.[^1].
+(아무런 사전 조치가 없다면) `thread`끼리는 메모리를 공유할 수 있고, `process`끼리는 memory를 공유할 수 없다.[^1]
+메모리를 공유할 수 없다는 사실 대해서 자세하게 많은 이야기가 있다. (필자가 아는게 아니고, 많은 이야기가 있다는 사실을 알 뿐이다.)
 
+병렬코드를 작성하는 필자의 목적은 `클러스터 컴퓨터 최대한 사용하기`이다. `일반 컴퓨터`는 물리적으로 보드 1개, CPU 1개가 보편적이다. 하지만 `클러스터 컴퓨터`는 보드가 여러장 꽂혀있고, 그 보드마다 CPU가 꽂혀있다. (GPU등 PIC Express를 사용한 가속기도 있지만, 이 글에서는 논외로 한다.)
 
 [^1]: [Wikipedia: Thread vs Process](https://en.wikipedia.org/wiki/Thread_(computing)#Threads_vs._processes)
