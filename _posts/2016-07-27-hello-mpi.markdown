@@ -6,6 +6,8 @@ categories: tutorials
 tags: MPI
 ---
 
+### OpenMP와 MPI ###
+
 병렬 알고리즘을 작성하는 방법에는 크게 2가지가 있다.
 
 1. `OpenMP`[^1]
@@ -16,12 +18,53 @@ tags: MPI
 (아무런 사전 조치가 없다면) `thread`끼리는 메모리를 공유할 수 있고, `process`끼리는 memory를 공유할 수 없다.[^3]
 메모리를 공유할 수 없다는 사실 대해서 자세하게 많은 이야기가 있다. (필자가 아는게 아니고, 많은 이야기가 있다는 사실을 알 뿐이다.)
 
-병렬코드를 작성하는 필자의 목적은 `클러스터 컴퓨터 최대한 사용하기`이다. `일반 컴퓨터`는 물리적으로 보드 1개, CPU 1개가 보편적이다. 하지만 `클러스터 컴퓨터`는 보드가 여러장 꽂혀있고, 그 보드마다 CPU가 꽂혀있다. (GPU등 PIC Express를 사용한 가속기도 있지만, 이 글에서는 논외로 한다.)`
+병렬코드를 작성하는 필자의 목적은 `클러스터 컴퓨터 최대한 사용하기`이다. `일반 컴퓨터`는 물리적으로 보드 1개, CPU 1개가 보편적이다. 하지만 `클러스터 컴퓨터`는 보드가 여러장 꽂혀있고, 그 보드마다 CPU가 꽂혀있다.
 
 결국 `클러스터 컴퓨터`를 사용하려면, 2가지를 혼용해야 한다. 2가지의 사용기준은 `보드 내부` 병렬화는 `OpenMP`, `보드사이` 병렬화는 `MPI`이다.
 
+### MPI의 샘플 코드 ###
 
-##### Footnotes #####
+오늘의 목표는 아래의 샘폴 코드를 `컴파일`하고 `실행`하기이다.
+
+{% highlight c %}
+#include <mpi.h>
+#include <stdio.h>
+
+int main(int argc, char** argv) {
+    // Initialize the MPI environment
+    MPI_Init(NULL, NULL);
+
+    // Get the number of processes
+    int world_size;
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+    // Get the rank of the process
+    int world_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+
+    // Get the name of the processor
+    char processor_name[MPI_MAX_PROCESSOR_NAME];
+    int name_len;
+    MPI_Get_processor_name(processor_name, &name_len);
+
+    // Print off a hello world message
+    printf("Hello world from processor %s, rank %d"
+           " out of %d processors\n",
+           processor_name, world_rank, world_size);
+
+    // Finalize the MPI environment.
+    MPI_Finalize();
+}
+{% endhighlight %}
+
+1. 컴파일
+	* `gcc test.c -o test`
+	* `mpicc test.c -o test`
+1. 실행
+	* `./test`
+	* `mpiexec –np 16 ./test` OR `mpirun –np 16 ./test`
+
+### Footnotes ###
 [^1]: Multi Processing (see [OpenMP Official Website](http://openmp.org)).
 [^2]: Message Passing Interface (see [OpenMPI Official Website](http://open-mpi.org/)).
 [^3]: [Wikipedia: Thread vs Process](https://en.wikipedia.org/wiki/Thread_(computing)#Threads_vs._processes)
