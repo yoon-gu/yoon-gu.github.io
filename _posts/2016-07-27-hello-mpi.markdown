@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Let's start MPI"
+date:   2016-07-27 17:11:10 +0900
+categories: tutorials
+tags: MPI
+---
+
+병렬 알고리즘을 작성하는 방법에는 크게 2가지가 있다.
+
+1. `OpenMP`
+1. `MPI`
+
+위의 2가지를 구분짓는 가장 큰 차이점은 병렬화 실행단위(?)가 `thread`와 `process`라고 생각한다.
+
+(아무런 사전 조치가 없다면) `thread`끼리는 메모리를 공유할 수 있고, `process`끼리는 memory를 공유할 수 없다.[^1].
+
+
+[^1]: [Wikipedia: Thread vs Process](https://en.wikipedia.org/wiki/Thread_(computing)#Threads_vs._processes)
