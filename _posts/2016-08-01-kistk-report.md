@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Week"
+title:  "KISTI Weekly Report"
 author: Y Hwang
 categories: Report
 tags: [KISTI, Epidemic]
