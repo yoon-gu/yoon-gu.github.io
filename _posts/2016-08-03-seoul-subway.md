@@ -92,7 +92,7 @@ var tooltip = d3.select("body")
 
 queue()
     .defer(d3.json, "https://gist.githubusercontent.com/yoon-gu/b051fd123385303a5c03f0e0a833516c/raw/9fff4a65830be008709112c190c3ed939d42e994/seoul_municipalities_topo.json")
-    .defer(d3.csv, "https://gist.githubusercontent.com/yoon-gu/902efb6d5bd345e3837e035a3c0642b8/raw/3a18efd4d12b792d482f1867bcfc79645876b5ce/station_latlen.csv")
+    .defer(d3.csv, "https://gist.githubusercontent.com/yoon-gu/902efb6d5bd345e3837e035a3c0642b8/raw/3cf9c9418da25e195cfe8db9104497408b6e5bbd/station_latlen.csv")
     .await(ready);
 
 function ready(error, kor, stations) {
