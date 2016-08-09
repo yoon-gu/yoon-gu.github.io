@@ -46,8 +46,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore quam, commodi i
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = {top: 20, right: 120, bottom: 20, left: 40},
-    width = 960 - margin.right - margin.left,
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+    width = 750 - margin.right - margin.left,
     height = 800 - margin.top - margin.bottom;
 
 var i = 0,
@@ -94,7 +94,7 @@ function update(source) {
       links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 180; });
+  nodes.forEach(function(d) { d.y = d.depth * 120; });
 
   // Update the nodes…
   var node = svg.selectAll("g.node")
