@@ -19,6 +19,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore quam, commodi i
 
 
 <style>
+svg { background-color: #1A1A1A; }
 
 path {
   stroke-linejoin: round;
