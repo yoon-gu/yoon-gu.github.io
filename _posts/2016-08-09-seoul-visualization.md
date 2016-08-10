@@ -40,6 +40,12 @@ path {
 .no_l_6{ fill: #9E3B0B; }
 .no_l_7{ fill: #566112; }
 .no_l_8{ fill: #DB005B; }
+
+circle:hover {
+  stroke: black;
+  stroke-width: 2px;
+}
+
 svg .municipality-label {
   fill: white;
   font-size: 12px;
