@@ -157,7 +157,12 @@ val_loss = history.history['val_loss']
 ```
 
 ### 지금 생각난 TODO들###
-1. `tf.keras.Sequential`를 이용해서 모델을 구성할 수는 없을까요?
+1. `tf.keras.Sequential`를 이용해서 모델을 구성할 수는 없을까요? 아래와 같이 하면 문제없는 것을 확인했습니다.
+```python
+model = tf.keras.Sequential([base_model,
+                              tf.keras.layers.GlobalAveragePooling2D(),
+                              tf.keras.layers.Dense(2, activation='softmax')])
+```
 1. 사전 학습된 모델을 전체 학습시키는 방법
 1. Data Augmentation하는 방법
 
